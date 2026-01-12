@@ -39,39 +39,41 @@ h2{font-family:'Playfair Display',serif;font-weight:300;color:#333;font-size:1.3
 .skills-toggle{cursor:pointer;display:flex;align-items:center;gap:8px;user-select:none}
 .skills-toggle::after{content:'▼';font-size:0.4em;transition:transform 0.3s;display:inline-block}
 .skills-toggle.collapsed::after{transform:rotate(-90deg)}
-.skills-list{display:flex;flex-wrap:wrap;gap:8px;overflow:hidden;transition:max-height 0.3s ease-out;max-height:500px}
+.skills-list{display:flex;flex-wrap:wrap;gap:8px;overflow:hidden;transition:max-height 0.3s ease-out;max-height:500px;position:relative}
 .skills-list.collapsed{max-height:0;margin:0;padding:0}
-.skills-list.collapsed .skill-tag{opacity:0;transform:scale(0.8);animation:none !important}
-.skills-list.animating .skill-tag{opacity:0;transform:scale(0.8);animation:skillFadeIn 0.4s ease-out forwards}
-.skill-tag:nth-child(1){animation-delay:0.05s}
-.skill-tag:nth-child(2){animation-delay:0.1s}
-.skill-tag:nth-child(3){animation-delay:0.15s}
-.skill-tag:nth-child(4){animation-delay:0.2s}
-.skill-tag:nth-child(5){animation-delay:0.25s}
-.skill-tag:nth-child(6){animation-delay:0.3s}
-.skill-tag:nth-child(7){animation-delay:0.35s}
-.skill-tag:nth-child(8){animation-delay:0.4s}
-.skill-tag:nth-child(9){animation-delay:0.45s}
-.skill-tag:nth-child(10){animation-delay:0.5s}
-.skill-tag:nth-child(11){animation-delay:0.55s}
-.skill-tag:nth-child(12){animation-delay:0.6s}
-.skill-tag:nth-child(13){animation-delay:0.65s}
-.skill-tag:nth-child(14){animation-delay:0.7s}
-.skill-tag:nth-child(15){animation-delay:0.75s}
-.skill-tag:nth-child(16){animation-delay:0.8s}
-.skill-tag:nth-child(17){animation-delay:0.85s}
-.skill-tag:nth-child(18){animation-delay:0.9s}
-.skill-tag:nth-child(19){animation-delay:0.95s}
-.skill-tag:nth-child(20){animation-delay:1s}
-.skill-tag:nth-child(n+21){animation-delay:1.05s}
-@keyframes skillFadeIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+.skills-list.collapsed .skill-tag{opacity:0;animation:none !important}
+.skills-list.animating .skill-tag{opacity:0}
+.skills-list.animating .skill-tag.fade-in{opacity:1;animation:lineFadeIn 0.3s ease-out forwards}
+@keyframes lineFadeIn{from{opacity:0}to{opacity:1}}
 #skillsSection.collapsed{margin-bottom:10px}
 .education-toggle{cursor:pointer;display:flex;align-items:center;gap:8px;user-select:none}
 .education-toggle::after{content:'▼';font-size:0.4em;transition:transform 0.3s;display:inline-block}
 .education-toggle.collapsed::after{transform:rotate(-90deg)}
-.education-content{overflow:hidden;transition:max-height 0.3s ease-out,opacity 0.3s ease-out;max-height:500px;opacity:1}
+.education-content{overflow:hidden;transition:max-height 0.3s ease-out,opacity 0.3s ease-out;max-height:500px;opacity:1;position:relative}
 .education-content.collapsed{max-height:0;opacity:0;margin:0;padding:0}
+.education-content.collapsed .char{opacity:0;animation:none !important}
+.education-content.animating .char{opacity:0}
+.education-content.animating .char.fade-in{opacity:1;animation:lineFadeIn 0.05s ease-out forwards}
+.char{display:inline-block}
 #educationSection.collapsed{margin-bottom:10px}
+.experience-toggle{cursor:pointer;display:flex;align-items:center;gap:8px;user-select:none}
+.experience-toggle::after{content:'▼';font-size:0.4em;transition:transform 0.3s;display:inline-block}
+.experience-toggle.collapsed::after{transform:rotate(-90deg)}
+.experience-content{overflow:hidden;transition:max-height 0.3s ease-out,opacity 0.3s ease-out;max-height:5000px;opacity:1;position:relative}
+.experience-content.collapsed{max-height:0;opacity:0;margin:0;padding:0}
+.experience-content.collapsed .char{opacity:0;animation:none !important}
+.experience-content.animating .char{opacity:0}
+.experience-content.animating .char.fade-in{opacity:1;animation:lineFadeIn 0.05s ease-out forwards}
+#experienceSection.collapsed{margin-bottom:10px}
+.projects-toggle{cursor:pointer;display:flex;align-items:center;gap:8px;user-select:none}
+.projects-toggle::after{content:'▼';font-size:0.4em;transition:transform 0.3s;display:inline-block}
+.projects-toggle.collapsed::after{transform:rotate(-90deg)}
+.projects-content{overflow:hidden;transition:max-height 0.3s ease-out,opacity 0.3s ease-out;max-height:5000px;opacity:1;position:relative}
+.projects-content.collapsed{max-height:0;opacity:0;margin:0;padding:0}
+.projects-content.collapsed .char{opacity:0;animation:none !important}
+.projects-content.animating .char{opacity:0}
+.projects-content.animating .char.fade-in{opacity:1;animation:lineFadeIn 0.05s ease-out forwards}
+#projectsSection.collapsed{margin-bottom:10px}
 .skill-tag{background:rgba(0,0,0,0.05);padding:6px 14px;border-radius:20px;color:#333;font-size:0.9em}
 @media(max-width:768px){.container{padding:20px}h1{font-size:1.5em}.item-header{flex-direction:column}.contact{flex-direction:column;gap:8px}}
 </style>
@@ -94,18 +96,19 @@ h2{font-family:'Playfair Display',serif;font-weight:300;color:#333;font-size:1.3
 <div class="education-content collapsed">
 <div class="education-item">
 <div class="education-header">
-<span class="education-title">Candidate for Bachelor of Science in Computer Science</span>
-<span class="education-date">2024 - 2028</span>
+<span class="education-title" data-text="Candidate for Bachelor of Science in Computer Science"></span>
+<span class="education-date" data-text="2024 - 2028"></span>
 </div>
-<div class="education-school">University of Pennsylvania, School of Engineering and Applied Science, Philadelphia, PA</div>
+<div class="education-school" data-text="University of Pennsylvania, School of Engineering and Applied Science, Philadelphia, PA"></div>
 </div>
 </div>
 </section>
 
 <div id="skills-root"></div>
 
-<section>
-<h2>Experience</h2>
+<section id="experienceSection" class="collapsed">
+<h2 class="experience-toggle collapsed" onclick="toggleExperience()">Experience</h2>
+<div class="experience-content collapsed">
 <div class="experience-item">
 <div class="experience-header">
 <span class="experience-title">Icon.com</span>
@@ -181,10 +184,12 @@ h2{font-family:'Playfair Display',serif;font-weight:300;color:#333;font-size:1.3
 </ul>
 </div>
 </div>
+</div>
 </section>
 
-<section>
-<h2>Projects</h2>
+<section id="projectsSection" class="collapsed">
+<h2 class="projects-toggle collapsed" onclick="toggleProjects()">Projects</h2>
+<div class="projects-content collapsed">
 <div class="experience-item">
 <div class="experience-header">
 <span class="experience-title">YCombinator Startup School Network</span>
@@ -215,6 +220,7 @@ h2{font-family:'Playfair Display',serif;font-weight:300;color:#333;font-size:1.3
 <div class="experience-company">Next.js, Vercel</div>
 <div class="experience-desc">~50k+ hits, awarded design accolades (site of the day, honorable mentions) from CSSDesign Awards, CSSFox, AWWWards</div>
 </div>
+</div>
 </section>
 
 </div>
@@ -229,10 +235,29 @@ const toggleSkills=()=>{
 if(isCollapsed){
 setIsCollapsed(false);
 setIsAnimating(true);
-setTimeout(()=>setIsAnimating(false),1200);
+const listEl=document.getElementById('skillsList');
+if(listEl){
+const tags=listEl.querySelectorAll('.skill-tag');
+let index=0;
+const animateNext=()=>{
+if(index<tags.length){
+const tag=tags[index];
+tag.classList.add('fade-in');
+index++;
+setTimeout(animateNext,50);
+}else{
+setTimeout(()=>setIsAnimating(false),200);
+}
+};
+setTimeout(animateNext,50);
+}
 }else{
 setIsCollapsed(true);
 setIsAnimating(false);
+const listEl=document.getElementById('skillsList');
+if(listEl){
+listEl.querySelectorAll('.skill-tag').forEach(tag=>tag.classList.remove('fade-in'));
+}
 }
 };
 return React.createElement('section',{
@@ -251,13 +276,161 @@ className:'skill-tag'
 }
 const root=ReactDOM.createRoot(document.getElementById('skills-root'));
 root.render(React.createElement(SkillsSection));
+function wrapTextInChars(element){
+if(element.dataset.text){
+const text=element.dataset.text;
+element.innerHTML='';
+for(let i=0;i<text.length;i++){
+const char=text[i]===' '?'\u00A0':text[i];
+const span=document.createElement('span');
+span.className='char';
+span.textContent=char;
+element.appendChild(span);
+}
+}
+}
+function wrapAllTextInChars(container){
+const walker=document.createTreeWalker(container,NodeFilter.SHOW_TEXT,null,false);
+const textNodes=[];
+let node;
+while(node=walker.nextNode()){
+if(node.textContent.trim()){
+textNodes.push(node);
+}
+}
+textNodes.forEach(textNode=>{
+const parent=textNode.parentNode;
+if(parent.tagName==='SCRIPT'||parent.tagName==='STYLE')return;
+const text=textNode.textContent;
+const fragment=document.createDocumentFragment();
+for(let i=0;i<text.length;i++){
+const char=text[i]===' '?'\u00A0':text[i];
+const span=document.createElement('span');
+span.className='char';
+span.textContent=char;
+fragment.appendChild(span);
+}
+parent.replaceChild(fragment,textNode);
+});
+}
+function restoreTextContent(container){
+if(container.dataset.originalHtml){
+container.innerHTML=container.dataset.originalHtml;
+delete container.dataset.originalHtml;
+}
+}
 function toggleEducation(){
 const content=document.querySelector('.education-content');
 const toggle=document.querySelector('.education-toggle');
 const section=document.getElementById('educationSection');
-content.classList.toggle('collapsed');
-toggle.classList.toggle('collapsed');
-section.classList.toggle('collapsed');
+const isCollapsed=content.classList.contains('collapsed');
+if(!isCollapsed){
+content.classList.add('collapsed');
+toggle.classList.add('collapsed');
+section.classList.add('collapsed');
+content.classList.remove('animating');
+content.querySelectorAll('.char').forEach(char=>char.classList.remove('fade-in'));
+const title=content.querySelector('.education-title');
+const date=content.querySelector('.education-date');
+const school=content.querySelector('.education-school');
+if(title.dataset.text)title.innerHTML=title.dataset.text;
+if(date.dataset.text)date.innerHTML=date.dataset.text;
+if(school.dataset.text)school.innerHTML=school.dataset.text;
+}else{
+content.classList.remove('collapsed');
+toggle.classList.remove('collapsed');
+section.classList.remove('collapsed');
+const title=content.querySelector('.education-title');
+const date=content.querySelector('.education-date');
+const school=content.querySelector('.education-school');
+wrapTextInChars(title);
+wrapTextInChars(date);
+wrapTextInChars(school);
+content.classList.add('animating');
+const allChars=Array.from(content.querySelectorAll('.char'));
+let charIndex=0;
+const animateNext=()=>{
+if(charIndex<allChars.length){
+const char=allChars[charIndex];
+char.classList.add('fade-in');
+charIndex++;
+setTimeout(animateNext,5);
+}else{
+setTimeout(()=>content.classList.remove('animating'),200);
+}
+};
+setTimeout(animateNext,50);
+}
+}
+function toggleExperience(){
+const content=document.querySelector('.experience-content');
+const toggle=document.querySelector('.experience-toggle');
+const section=document.getElementById('experienceSection');
+const isCollapsed=content.classList.contains('collapsed');
+if(!isCollapsed){
+content.classList.add('collapsed');
+toggle.classList.add('collapsed');
+section.classList.add('collapsed');
+content.classList.remove('animating');
+restoreTextContent(content);
+}else{
+content.classList.remove('collapsed');
+toggle.classList.remove('collapsed');
+section.classList.remove('collapsed');
+if(!content.dataset.originalHtml){
+content.dataset.originalHtml=content.innerHTML;
+}
+wrapAllTextInChars(content);
+content.classList.add('animating');
+const allChars=Array.from(content.querySelectorAll('.char'));
+let charIndex=0;
+const animateNext=()=>{
+if(charIndex<allChars.length){
+const char=allChars[charIndex];
+char.classList.add('fade-in');
+charIndex++;
+setTimeout(animateNext,5);
+}else{
+setTimeout(()=>content.classList.remove('animating'),200);
+}
+};
+setTimeout(animateNext,50);
+}
+}
+function toggleProjects(){
+const content=document.querySelector('.projects-content');
+const toggle=document.querySelector('.projects-toggle');
+const section=document.getElementById('projectsSection');
+const isCollapsed=content.classList.contains('collapsed');
+if(!isCollapsed){
+content.classList.add('collapsed');
+toggle.classList.add('collapsed');
+section.classList.add('collapsed');
+content.classList.remove('animating');
+restoreTextContent(content);
+}else{
+content.classList.remove('collapsed');
+toggle.classList.remove('collapsed');
+section.classList.remove('collapsed');
+if(!content.dataset.originalHtml){
+content.dataset.originalHtml=content.innerHTML;
+}
+wrapAllTextInChars(content);
+content.classList.add('animating');
+const allChars=Array.from(content.querySelectorAll('.char'));
+let charIndex=0;
+const animateNext=()=>{
+if(charIndex<allChars.length){
+const char=allChars[charIndex];
+char.classList.add('fade-in');
+charIndex++;
+setTimeout(animateNext,5);
+}else{
+setTimeout(()=>content.classList.remove('animating'),200);
+}
+};
+setTimeout(animateNext,50);
+}
 }
 </script>
 </body>

@@ -183,6 +183,7 @@ h2 {
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   max-height: 500px;
+  position: relative;
 }
 
 .skills-list.collapsed {
@@ -193,108 +194,24 @@ h2 {
 
 .skills-list.collapsed .skill-tag {
   opacity: 0;
-  transform: scale(0.8);
   animation: none !important;
 }
 
 .skills-list.animating .skill-tag {
   opacity: 0;
-  transform: scale(0.8);
-  animation: skillFadeIn 0.4s ease-out forwards;
 }
 
-.skill-tag:nth-child(1) {
-  animation-delay: 0.05s;
+.skills-list.animating .skill-tag.fade-in {
+  opacity: 1;
+  animation: lineFadeIn 0.3s ease-out forwards;
 }
 
-.skill-tag:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.skill-tag:nth-child(3) {
-  animation-delay: 0.15s;
-}
-
-.skill-tag:nth-child(4) {
-  animation-delay: 0.2s;
-}
-
-.skill-tag:nth-child(5) {
-  animation-delay: 0.25s;
-}
-
-.skill-tag:nth-child(6) {
-  animation-delay: 0.3s;
-}
-
-.skill-tag:nth-child(7) {
-  animation-delay: 0.35s;
-}
-
-.skill-tag:nth-child(8) {
-  animation-delay: 0.4s;
-}
-
-.skill-tag:nth-child(9) {
-  animation-delay: 0.45s;
-}
-
-.skill-tag:nth-child(10) {
-  animation-delay: 0.5s;
-}
-
-.skill-tag:nth-child(11) {
-  animation-delay: 0.55s;
-}
-
-.skill-tag:nth-child(12) {
-  animation-delay: 0.6s;
-}
-
-.skill-tag:nth-child(13) {
-  animation-delay: 0.65s;
-}
-
-.skill-tag:nth-child(14) {
-  animation-delay: 0.7s;
-}
-
-.skill-tag:nth-child(15) {
-  animation-delay: 0.75s;
-}
-
-.skill-tag:nth-child(16) {
-  animation-delay: 0.8s;
-}
-
-.skill-tag:nth-child(17) {
-  animation-delay: 0.85s;
-}
-
-.skill-tag:nth-child(18) {
-  animation-delay: 0.9s;
-}
-
-.skill-tag:nth-child(19) {
-  animation-delay: 0.95s;
-}
-
-.skill-tag:nth-child(20) {
-  animation-delay: 1s;
-}
-
-.skill-tag:nth-child(n+21) {
-  animation-delay: 1.05s;
-}
-
-@keyframes skillFadeIn {
+@keyframes lineFadeIn {
   from {
     opacity: 0;
-    transform: scale(0.8);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
 
@@ -326,6 +243,7 @@ h2 {
   transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
   max-height: 500px;
   opacity: 1;
+  position: relative;
 }
 
 .education-content.collapsed {
@@ -335,7 +253,129 @@ h2 {
   padding: 0;
 }
 
+.education-content.collapsed .char {
+  opacity: 0;
+  animation: none !important;
+}
+
+.education-content.animating .char {
+  opacity: 0;
+}
+
+.education-content.animating .char.fade-in {
+  opacity: 1;
+  animation: lineFadeIn 0.05s ease-out forwards;
+}
+
+.char {
+  display: inline-block;
+}
+
 #educationSection.collapsed {
+  margin-bottom: 10px;
+}
+
+.experience-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.experience-toggle::after {
+  content: '▼';
+  font-size: 0.4em;
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.experience-toggle.collapsed::after {
+  transform: rotate(-90deg);
+}
+
+.experience-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  max-height: 5000px;
+  opacity: 1;
+  position: relative;
+}
+
+.experience-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.experience-content.collapsed .char {
+  opacity: 0;
+  animation: none !important;
+}
+
+.experience-content.animating .char {
+  opacity: 0;
+}
+
+.experience-content.animating .char.fade-in {
+  opacity: 1;
+  animation: lineFadeIn 0.05s ease-out forwards;
+}
+
+#experienceSection.collapsed {
+  margin-bottom: 10px;
+}
+
+.projects-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.projects-toggle::after {
+  content: '▼';
+  font-size: 0.4em;
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.projects-toggle.collapsed::after {
+  transform: rotate(-90deg);
+}
+
+.projects-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  max-height: 5000px;
+  opacity: 1;
+  position: relative;
+}
+
+.projects-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.projects-content.collapsed .char {
+  opacity: 0;
+  animation: none !important;
+}
+
+.projects-content.animating .char {
+  opacity: 0;
+}
+
+.projects-content.animating .char.fade-in {
+  opacity: 1;
+  animation: lineFadeIn 0.05s ease-out forwards;
+}
+
+#projectsSection.collapsed {
   margin-bottom: 10px;
 }
 

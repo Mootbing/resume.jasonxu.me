@@ -38,10 +38,31 @@ export default function SkillsSection() {
     if (isCollapsed) {
       setIsCollapsed(false)
       setIsAnimating(true)
-      setTimeout(() => setIsAnimating(false), 1200)
+      const listEl = document.getElementById('skillsList')
+      if (listEl) {
+        const tags = listEl.querySelectorAll('.skill-tag')
+        let index = 0
+        const animateNext = () => {
+          if (index < tags.length) {
+            const tag = tags[index] as HTMLElement
+            tag.classList.add('fade-in')
+            index++
+            setTimeout(animateNext, 50)
+          } else {
+            setTimeout(() => setIsAnimating(false), 200)
+          }
+        }
+        setTimeout(animateNext, 50)
+      }
     } else {
       setIsCollapsed(true)
       setIsAnimating(false)
+      const listEl = document.getElementById('skillsList')
+      if (listEl) {
+        listEl
+          .querySelectorAll('.skill-tag')
+          .forEach((tag) => tag.classList.remove('fade-in'))
+      }
     }
   }
 
