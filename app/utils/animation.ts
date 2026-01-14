@@ -15,8 +15,7 @@ export function wrapAllTextInChars(container: HTMLElement) {
   const walker = document.createTreeWalker(
     container,
     NodeFilter.SHOW_TEXT,
-    null,
-    false
+    null
   );
   const textNodes: Text[] = [];
   let node: Node | null;
