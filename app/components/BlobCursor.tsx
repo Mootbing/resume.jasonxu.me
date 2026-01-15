@@ -24,6 +24,16 @@ export default function BlobCursor() {
       const target = document.elementFromPoint(clientX, clientY) as HTMLElement
       if (!target) return null
 
+      // Check for contact button
+      const contactButton = target.closest('.contact-button')
+      if (contactButton) {
+        const rect = contactButton.getBoundingClientRect()
+        return {
+          type: 'header',
+          bounds: new DOMRect(rect.left - 8, rect.top - 2, rect.width + 16, rect.height + 4),
+        }
+      }
+
       // Check for skill bubble
       const skillBubble = target.closest('.skill-bubble')
       if (skillBubble) {

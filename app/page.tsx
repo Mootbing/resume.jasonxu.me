@@ -3,10 +3,28 @@ import EducationSection from './components/EducationSection'
 import SkillsSection from './components/SkillsSection'
 import ExperienceSection from './components/ExperienceSection'
 import ProjectsSection from './components/ProjectsSection'
+import ContactButton from './components/ContactButton'
+import BackgroundResume from './components/BackgroundResume'
 
 export default function Home() {
   return (
     <div className="wrapper">
+      <BackgroundResume />
+      <div 
+        style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          fontSize: '15vw',
+          fontWeight: 900,
+          color: '#000',
+          zIndex: -1,
+          whiteSpace: 'nowrap',
+          pointerEvents: 'none'
+        }}
+      >
+      </div>
       <div className="container">
         <Header />
 
@@ -47,6 +65,7 @@ export default function Home() {
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
         </a>
+        <ContactButton />
       </div>
     </div>
   )
