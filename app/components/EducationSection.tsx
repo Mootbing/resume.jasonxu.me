@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { wrapTextInChars, animateChars } from '../utils/animation'
 
 export default function EducationSection() {
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(false)
   const contentRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLSpanElement>(null)
   const dateRef = useRef<HTMLSpanElement>(null)

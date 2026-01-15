@@ -4,7 +4,7 @@ import { useState, useRef } from 'react'
 import { wrapAllTextInChars, restoreTextContent, animateChars } from '../utils/animation'
 
 export default function ProjectsSection() {
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(false)
   const contentRef = useRef<HTMLDivElement>(null)
 
   const toggleProjects = () => {
@@ -61,7 +61,7 @@ export default function ProjectsSection() {
               </li>
               <li>
                 Created front-end search portal in Next.js, implementing
-                Firebase Auth to prevent bottling and abuse
+                Firebase Auth to prevent botting and abuse
               </li>
               <li>
                 Launched on LinkedIn with 270k+ views, 700+ new followers, and
@@ -88,8 +88,8 @@ export default function ProjectsSection() {
           </div>
           <div className="experience-company">Next.js, Vercel</div>
           <div className="experience-desc">
-            ~50k+ hits, awarded design accolades (site of the day, honorable
-            mentions) from CSSDesign Awards, CSSFox, AWWWards
+            10k+ hits, awarded design accolades (site of the day) from
+            CSSDesign Awards, CSSFox, AWWWards
           </div>
         </div>
       </div>

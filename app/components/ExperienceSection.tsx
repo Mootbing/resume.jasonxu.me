@@ -4,7 +4,7 @@ import { useState, useRef } from 'react'
 import { wrapAllTextInChars, restoreTextContent, animateChars } from '../utils/animation'
 
 export default function ExperienceSection() {
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(false)
   const contentRef = useRef<HTMLDivElement>(null)
 
   const toggleExperience = () => {

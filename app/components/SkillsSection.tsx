@@ -31,7 +31,7 @@ const skills = [
 ]
 
 export default function SkillsSection() {
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
 
   const toggleSkills = () => {
